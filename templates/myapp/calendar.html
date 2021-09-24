@@ -1,0 +1,64 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" typw="text/css" href="{% static 'myapp/css/calendar.css' %}">
+{% endblock %}
+
+<title>{% block title %}calendar{% endblock %}</title>
+
+{% comment %} contentのタグの中にいわゆるhtmlのmainタグの中に入れ込みたい内容を書く。 {% endcomment %}
+{% block content %}
+<div class="top-icon">
+        <a class="top-icon_home" href="{% url 'top'%}"
+          ><img src="{% static 'myapp/img/ホームへ戻る.svg'%}"
+        /></a>
+        <a class="top-icon_back" href="{% url 'top'%}"
+          ><img src="{% static 'myapp/img/１つ戻る.svg'%}"
+        /></a>
+      </div>
+       <div class="calendar-text">
+        <h1 class="calendar-text_title">イベント開催の一覧</h1>
+        <p class="calendar-text_sub">
+          イベントを行っている美術館の数によって以下のように色分けされています。
+        </p>
+      </div>
+      <div class="wrapper">
+        <!-- xxxx年xx月を表示 -->
+        <h2 id="header"></h2>
+
+        <!-- ボタンクリックで月移動 -->
+        <div id="next-prev-button">
+          <button id="prev" onclick="prev()" >先月へ</button>
+          <button id="next" onclick="next()">来月へ</button>
+        </div>
+
+        <!-- カレンダー -->
+        <div id="calendar"></div>
+      </div>
+      <div class='help-text'>
+      <p>〇色は○○○○を示しています。</p>
+      </div>
+      <div class="ghost-data">
+      <ul>
+      {%for item in event_date%}
+      <li>{{item}}</li>
+      {%endfor%}
+      
+      </ul>
+      </div>
+
+{% endblock %}
+
+{% comment %} 戻るボタンなど {% endcomment %}
+{% block footer %}
+
+{% endblock %}
+
+{% comment %} 必要であればscriptタグを読み込んでください {% endcomment %}
+{% block javascript %}
+
+<script type="text/javascript" src="{% static 'myapp/js/calendar.js' %}"></script>
+
+{% endblock %}

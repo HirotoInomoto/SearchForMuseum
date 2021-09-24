@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Toppan Bunkyu Mincho R", "Yu Mincho";
+}
+
+
+/*ヘッダー*/
+
+
+.top-title img {
+  width: 100vw;
+  /* 元の画像より大きくならない。なぜ？*/
+  height: auto;
+}
+
+.top-icon {
+  width: 95vw;
+  margin: 0 auto;
+  position: relative;
+  top: -0.5rem;
+}
+
+.calendar-text {
+  width: 85vw;
+  margin: -0.6rem auto 0;
+
+}
+
+.calendar-text_title {
+  font-size: 1.0625rem;
+}
+
+.calendar-text_sub {
+  font-size: 0.65rem;
+}
+
+/*カレンダー全体*/
+.wrapper {
+  width: 80vw;
+  margin: 0 auto;
+  color: #666;
+}
+
+#header {
+  text-align: center;
+  font-size: 1.5rem;
+  width: 40vw;
+  margin: 0 auto;
+  color: #000;
+  background-color: #23a76f;
+  border: solid 0.06rem #fff;
+  border-radius: 0.6rem;
+}
+
+/*カレンダー*/
+#calendar {
+  text-align: center;
+  width: 100%;
+}
+
+table {
+  outline: 0.12rem solid #ddd;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff;
+}
+
+th {
+  color: #000;
+}
+
+th,
+td {
+  outline: 0.06rem solid #ddd;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+/*日曜日*/
+td:first-child {
+  color: red;
+}
+
+/*土曜日*/
+td:last-child {
+  color: blue;
+}
+
+/*前後月の日付*/
+td.disabled {
+  color: #ccc;
+}
+
+/*本日*/
+td.today {
+  color: #000;
+}
+
+/*ボタン*/
+#next-prev-button {
+  position: relative;
+}
+
+#next-prev-button button {
+  height: 5vh;
+  cursor: pointer;
+  background: #23a76f;
+  color: #000;
+  border: 0.0625rem solid #fff;
+  border-radius: 0.24rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.6rem;
+  margin: 1rem 0;
+}
+
+#next-prev-button button:hover {
+  background-color: #23a76f;
+  border-color: #23a76f;
+}
+
+#prev {
+  float: left;
+}
+
+#next {
+  float: right;
+}
+
+
+/*祝日*/
+td.holiday {
+  color: red;
+}
+
+
+/*ヘルプテキスト*/
+
+.help-text {
+  width: 85vw;
+  margin: 0.8rem auto 0;
+}
+
+
+/*日付リンク */
+
+.date-number {
+  z-index: 1;
+}
+
+.date-link {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+}
+
+.ghost-data {
+  display: none;
+}

@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+
+main {
+    position: fixed;
+    top: 10vh;
+    left: 2.5vw;
+    height: 90vh;
+
+}
+
+/* ページタイトル */
+
+.events_text {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.events_text-title {
+    font-size: 1.0625rem;
+}
+
+.events_text-sub {
+    font-size: 0.8625rem;
+}
+
+
+/* イベント一覧 */
+
+.events-data {
+    height: 80vh;
+    width: 95vw;
+    overflow: scroll;
+    padding-bottom: 10rem;
+    margin: 0 auto;
+}
+
+.no-event {
+    font-size: 1.5rem;
+    color: rgb(119, 118, 118);
+    width: 85vw;
+    margin: 1rem auto 0;
+}
+
+/*イベントデータにdivなどを入れるとMapのアイコンが出なくなるため、全ての要素をvwでガチガチに固定*/
+
+.event-data {
+    width: 85vw;
+    border: solid 0.3rem #23a76f;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.6875rem;
+    padding: 0.3vh 2vw;
+    margin: 0 auto 3vh;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #00000029;
+}
+
+.event-data:active {
+    transform: translate(0, 0.2rem);
+    background-color: rgb(181, 181, 181);
+}
+
+
+.museum-name {
+    width: 25vw;
+    height: 1.3rem;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+.event-name {
+    width: 59vw;
+    height: 1.3rem;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+.event-date {
+    width: 15vw;
+}
+
+.event-start {
+    width: 22vw;
+}
+
+.between {
+    width: 7vw;
+}
+
+.event-end {
+    width: 33vw;
+}
+
+.event-hours_text {
+    width: 15vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.event-hours {
+    width: 61vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.address_text {
+    width: 15vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.address {
+    width: 63vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.event-hp_text {
+    width: 18vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.event-hp {
+    width: 60vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.event-rate_text {
+    width: 20vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.event-rate {
+    width: 55vw;
+    height: 1rem;
+    overflow: hidden;
+}
+
+.goReview {
+    width: 27vw;
+    margin-left: 53vw;
+    text-align: right;
+    text-decoration: none;
+}

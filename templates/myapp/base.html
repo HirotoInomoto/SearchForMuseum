@@ -1,0 +1,41 @@
+{% load static %}
+
+{% comment %}今回ベーステンプレートを使う旨味あまりありませんが、ちょっと使ってみたかったので使わせてください{% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'myapp/css/base.css' %}"
+    />
+    {% comment %} 各ページ固有のcssを読み込むためのblockタグ「{% endcomment %}
+    {% block link %}{% endblock %}
+
+    <title>{% block title%}{% endblock %}</title>
+  </head>
+
+  <body>
+    <header>
+      {% comment      %}ヘッダーの画像、画像を埋め込む際djangoでは注意が必要なので気をつけて。 {% endcomment %}
+      {% block header %} 
+      <h1 class="top-title"><img src="{% static 'myapp/img/ヘッダー@3x_thin.png'%}" alt="あなぐる古都美術館" class='top-title-img'></h1>
+      {%endblock %}
+    </header>
+    <main>
+      {% comment %} メインの部分を各テンプレートに記述お願いします。 {% endcomment %} 
+      {% block content %} {% endblock %}
+    </main>
+    <footer>
+      {% comment %} 戻るボタンのコードはfooterに記述するがhref属性の値が異なるので、子テンプレートの方で記述する（topに戻るは変わらないが、、、） {% endcomment %} 
+      {% block footer %} {%endblock %}
+    </footer>
+    {% comment %}    以下には各テンプレートにscriptタグを記述してください描画処理を先に優先させるためにheadではなくfooterの後ろにscriptを記述指定います。{%  endcomment %}
+     {% block javascript %} {% endblock %}
+  </body>
+</html>

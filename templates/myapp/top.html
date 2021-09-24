@@ -1,0 +1,70 @@
+{% extends 'myapp/base.html' %} {% load static %} {% block link %}
+<link rel="stylesheet" typw="text/css" href="{% static 'myapp/css/top.css' %}" />
+
+{% endblock %}
+
+<title>{% block title %}あなぐる古都美術館{% endblock %}</title>
+
+
+
+{% block header %}
+<h1 class="top-title">
+    <img src="{% static 'myapp/img/ヘッダー@3x.png'%}" alt="あなぐる古都美術館" class='top-title-img' />
+</h1>
+{%endblock %}
+
+{% comment%}contentのタグの中にいわゆるhtmlのmainタグの中に入れ込みたい内容を書く。{%endcomment %}
+{% block content %}
+
+<div class="help">
+    <p class="help-text">
+        展示会などのイベントを開催している美術館を探すことができます。お好みの探し方を選択してください。
+    </p>
+</div>
+<div class="button_container">
+    <div class="map-button" id="btn1">場所から探す</div>
+    <div class="calendar-button" id="btn2">日付から探す</div>
+</div>
+
+{% endblock %}
+
+{% comment %}top.htmlはfooterに入れるべきものないかも {%endcomment %}
+{% block footer %}
+
+{%endblock %}
+
+
+{% comment %}必要であればscriptタグを読み込んでください {%endcomment %}
+{% block javascript%}
+
+<script>
+    window.onload = function () {
+
+        //ボタンクリック時に実行されるイベントハンドラーを登録
+        document.getElementById("btn1").onclick = function () {
+
+            setTimeout(function () {
+                //遷移
+                window.location.href = "{% url 'map' %}";
+                //0.2秒遅延
+            }, 200);
+
+        }
+
+        document.getElementById("btn2").onclick = function () {
+
+
+            setTimeout(function () {
+
+                window.location.href = "{% url 'calendar' %}";
+
+            }, 200);
+
+
+        }
+
+    };
+</script>
+
+
+{% endblock %}

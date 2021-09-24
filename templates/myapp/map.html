@@ -1,0 +1,77 @@
+{% extends 'myapp/base.html' %} {% load static %} {% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/map.css' %}" />
+{% endblock %}
+
+<title>{% block title %}map{% endblock %}</title>
+
+{% comment %}contentのタグの中にいわゆるhtmlのmainタグの中に入れ込みたい内容を書く。 {%endcomment %}
+
+{% block content %}
+<div class="top-icon">
+    <a class="top-icon_home" href="{% url 'top'%}"><img src="{% static 'myapp/img/ホームへ戻る.svg'%}"></a>
+    <a class="top-icon_back" href="{% url 'top'%}"><img src="{% static 'myapp/img/１つ戻る.svg'%}"></a>
+</div>
+
+
+<div class="event-map">
+    <div class="event-map_text">
+        <h2 class="event-map_text_title">現在イベント開催中の美術館</h2>
+        <p class="event-map_text_sub">ピンをタップすると詳細が表示されます。</p>
+    </div>
+    {% comment %}id名はmapでないとだめです。変えないでください {% endcomment %}
+    <div id="map"></div>
+</div>
+
+<div class="events">
+    <div class="events_text">
+        <h3 class="events_text_title">開催中</h2>
+    </div>
+    <ul class="ghost-data">
+        {% comment %} django側からはMuseumEventのインスタンスのまとまりであるquerysetはeventsという名前で渡してます。 {% endcomment %}
+        {% for item in events %}
+        <div class="event-data" id="one">
+            <p class="museum-name">{{item.museum_name}}</p>
+            <p class="event-name">{{item.title}}</p>
+            <p class="event-date">開催期間:</p>
+            <p class="event-start">{{item.start_event_date}}</p>
+            <p class="between">~</p>
+            <p class="event-end">{{item.end_event_date}}</p>
+            <p class="event-hours_text">営業時間:</p>
+            <p class="event-hours">{{item.business_hours}}</p>
+            <p class="address_text" style="display: none;">所在地:</p>
+            <p class="address" style="display: none;">{{item.address}}</p>
+            <p class="event-hp_text" style="display: none;">公式サイト:</p>
+            <p class="event-hp" style="display: none;">{{item.official_hp_link}}</p>
+            <p class="event-rate_text" style="display: none;">みんなの評価:</p>
+            <p class="event-rate" style="display: none;">{{item.rate_average}}</p>
+            <p class="goReview-space" style="display: none;">a</p>
+            <a href="{% url 'review' item.title 'a'%}" class="goReview" style="display: none;">レビュー一覧へ</a>
+        </div>
+        {% endfor %}
+    </ul>
+</div>
+
+{% comment %}下のghost-dataはdisplayをnoneにして検証の部分だけみて何番目の子要素か特定しjs側で内容を受け取る。{%endcomment %}
+
+
+{% endblock %}
+{% comment %} ボタンなど {% endcomment %}
+{% block footer %}
+{%endblock %}
+{% comment %} 必要であれば追加でscriptタグを読み込んでください初めから書いてあるscriptタグは順番を変えたり消したりしないでください{%endcomment %}
+
+{% block javascript %}
+{% comment %}
+<script type="text/javascript" src="{% static 'myapp/js/gitignore.js' %}"></script>
+{% endcomment %}
+
+{% comment %}
+<script type="text/javascript" src="{% static 'myapp/js/map.js' %}"></script>
+{% endcomment %}
+
+<script type="text/javascript" src="{% static 'myapp/js/map.js' %}"></script>
+
+<script async src="{{ api_url }}"></script>
+
+{% comment %} srcってこの表記でいいんだっけ {% endcomment %}
+{% endblock %}

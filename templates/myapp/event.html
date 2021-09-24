@@ -1,0 +1,56 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" typw="text/css" href="{% static 'myapp/css/event.css' %}">
+{% endblock %}
+
+<title>{% block title %}event{% endblock %}</title>
+
+{% comment %} contentのタグの中にいわゆるhtmlのmainタグの中に入れ込みたい内容を書く。 {% endcomment %}
+{% block content %}
+<div class="top-icon">
+  <a class="top-icon_home" href="{% url 'top'%}"><img src="{% static 'myapp/img/ホームへ戻る.svg'%}" /></a>
+  <a class="top-icon_back" href="{% url 'calendar' %}"><img src="{% static 'myapp/img/１つ戻る.svg'%}" /></a>
+</div>
+<div class="events_text">
+  <h2 class="events_text-title">イベント一覧</h2>
+  <p class="events_text-sub">{{date}}</p>
+
+</div>
+
+<ul class="events-data">
+  {% comment %} django側からはMuseumEventのインスタンスのまとまりであるquerysetはeventsという名前で渡してます。 {% endcomment %}
+  {% for item in events %}
+  <div class="event-data" id='one'>
+    <p class="museum-name">{{item.museum_name}}</p>
+    <p class="event-name">{{item.title}}</p>
+    <p class="event-date">開催期間:</p>
+    <p class="event-start">{{item.start_event_date}}</p>
+    <p class="between">~</p>
+    <p class="event-end">{{item.end_event_date}}</p>
+    <p class="event-hours_text">営業時間:</p>
+    <p class="event-hours">{{item.business_hours}}</p>
+    <p class="address_text" style="display: none;">所在地:</p>
+    <p class="address" style="display: none;">{{item.address}}</p>
+    <p class="event-hp_text" style="display: none;">公式サイト:</p>
+    <p class="event-hp" style="display: none;">{{item.official_hp_link}}</p>
+    <p class="event-rate_text" style="display: none;">みんなの評価:</p>
+    <p class="event-rate" style="display: none;">{{item.rate_average}}</p>
+    <a href="{% url 'review' item.title 'a'%}" class="goReview" style="display: none;">レビュー一覧へ</a>
+  </div>
+  {% endfor %}
+  {% endblock %}
+
+  {% comment %} 戻るボタンなど {% endcomment %}
+  {% block footer %}
+
+  {% endblock %}
+
+
+  {% comment %} 必要であればscriptタグを読み込んでください {% endcomment %}
+  {% block javascript %}
+  <script type="text/javascript" src="{% static 'myapp/js/event.js' %}"></script>
+
+  {% endblock %}

@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+* {
+    list-style: none;
+}
+
+main {
+    position: fixed;
+    top: 10vh;
+    left: 2.5vw;
+    height: 90vh;
+}
+
+
+/* テキスト */
+.review-top {
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+}
+
+.review-text_title {
+    font-size: 1.0625rem;
+    width: 60vw;
+}
+
+.review-order {
+    text-align: right;
+    width: 30vw;
+    font-size: 0.5rem;
+    padding-top: 0.2rem;
+}
+
+/* レビュー一覧 */
+
+.event-reviews {
+    padding-top: 1vh;
+    height: 70vh;
+    overflow: scroll;
+}
+
+.review-data {
+    width: 85vw;
+    height: 67px;
+    overflow: hidden;
+    margin: 0 auto 2rem;
+    border: solid 0.3rem #23a76f;
+    border-radius: 0.8rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #00000029;
+}
+
+.review-data_top {
+    display: flex;
+}
+
+.review-rate {
+    font-size: 1.5rem;
+    color: #DCCB18;
+    text-shadow: 0.00625rem #000;
+    margin-left: 0.5rem;
+}
+
+.review-date {
+    font-size: 0.5rem;
+    color: #707070;
+    padding: 1rem 0rem 0rem 0.8rem;
+}
+
+.review-content {
+    margin: 0 0.5rem;
+}
+
+/* 投稿フォーム */
+
+#stars {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    color: #DCCB18;
+    text-shadow: 0.00625rem #000;
+}
+
+
+.review-form {
+    width: 100vw;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    padding-left: 7.5vw;
+    padding-bottom: 1vh;
+    background-color: rgb(255, 255, 255);
+}
+
+
+
+.form-bottom {
+    display: flex;
+    width: 85vw;
+}
+
+textarea {
+    border: 0.12rem solid #23a76f;
+    border-radius: 0.6rem;
+    padding: 0.5rem;
+    width: 70vw;
+    height: 5vh;
+}
+
+#submit-button {
+    height: 7vh;
+}
+
+label {
+    display: none;
+}
+
+.errorlist {
+    color: blue;
+}
+
+.error {
+    color: blue;
+}
